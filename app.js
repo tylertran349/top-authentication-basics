@@ -6,8 +6,10 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
+require("dotenv").config();
 
-const mongoDb = "mongodb+srv://tylertran349:KleGWSEDlWryJjwD@cluster0.v1jifcx.mongodb.net/?retryWrites=true&w=majority";
+//TODO: Add .env file to gitignore and publish to GitHub
+const mongoDb = process.env.MONGO_DB_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
